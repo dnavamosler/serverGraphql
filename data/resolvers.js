@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Clientes, Productos } from './db';
+import { Clientes } from './db';
 import { rejects } from 'assert';
 
 export const resolvers = {
@@ -58,23 +58,6 @@ export const resolvers = {
 				Clientes.findOneAndRemove({ _id: id }, (error) => {
 					if (error) rejects(error);
 					else resolve('Se eliminó Correctamente');
-				});
-			});
-		},
-
-		// PRODUCTOS
-		crearProducto: async (root, { input }) => {
-			const nuevoProducto = new Productos({
-				nombre: input.nombre,
-				precio: input.precio,
-				buyBy: input.buyBy
-			});
-			nuevoProducto.id = nuevoProducto._id;
-
-			return new Promise((resolve, object) => {
-				nuevoProducto.save((error) => {
-					if (error) rejects(error);
-					else resolve(nuevoProducto);
 				});
 			});
 		}

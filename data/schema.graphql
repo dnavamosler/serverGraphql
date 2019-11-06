@@ -7,14 +7,6 @@ type Cliente {
 	edad: Int
 	tipo: TipoCliente
 	pedidos: [Pedido]
-	productos: [Producto]
-}
-
-type Producto {
-	id: ID
-	nombre: String!
-	precio: Int!
-	buyBy: ID
 }
 
 type Pedido {
@@ -55,14 +47,6 @@ input ClienteInput {
 	edad: Int
 	tipo: TipoCliente
 	pedidos: [PedidoInput]
-	productos: [ProductoInput]
-}
-
-input ProductoInput {
-	id: ID
-	nombre: String!
-	precio: Int!
-	buyBy: ID
 }
 
 type Mutation {
@@ -71,6 +55,4 @@ type Mutation {
 	crearCliente(input: ClienteInput): Cliente
 	actualizarCliente(input: ClienteInput): Cliente
 	eliminarCliente(id: ID!): String
-	#PRODUCTOS
-	crearProducto(input: ProductoInput): Producto
 }

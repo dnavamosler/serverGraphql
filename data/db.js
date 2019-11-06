@@ -21,13 +21,4 @@ const clientesSchema = new mongoose.Schema({
 
 const Clientes = mongoose.model('clientes', clientesSchema);
 
-// // Definir el schema de productos
-const ProductosSchema = new mongoose.Schema({
-	nombre: String,
-	precio: Number,
-	buyBy: String
-});
-
-const Productos = mongoose.model('productos', ProductosSchema);
-
-export { Clientes, Productos };
+export { Clientes };

@@ -1,0 +1,76 @@
+type Cliente {
+	id: ID
+	nombre: String
+	apellido: String
+	empresa: String
+	emails: [Email]
+	edad: Int
+	tipo: TipoCliente
+	pedidos: [Pedido]
+	productos: [Producto]
+}
+
+type Producto {
+	id: ID
+	nombre: String!
+	precio: Int!
+	buyBy: ID
+}
+
+type Pedido {
+	producto: String
+	precio: Int
+}
+
+type Email {
+	email: String
+}
+
+enum TipoCliente {
+	BASICO
+	PREMIUM
+}
+
+type Query {
+	getClientes(limite: Int, offset: Int): [Cliente]
+	getCliente(id: ID): Cliente
+	totalClientes: String
+}
+
+input PedidoInput {
+	producto: String
+	precio: Int
+}
+
+input EmailInput {
+	email: String
+}
+
+input ClienteInput {
+	id: ID
+	nombre: String
+	apellido: String
+	empresa: String
+	emails: [EmailInput]
+	edad: Int
+	tipo: TipoCliente
+	pedidos: [PedidoInput]
+	productos: [ProductoInput]
+}
+
+input ProductoInput {
+	id: ID
+	nombre: String!
+	precio: Int!
+	buyBy: ID
+}
+
+type Mutation {
+	#Nombre del resolver, input con datos y valor que retorna
+	#CLIENTES
+	crearCliente(input: ClienteInput): Cliente
+	actualizarCliente(input: ClienteInput): Cliente
+	eliminarCliente(id: ID!): String
+	#PRODUCTOS
+	crearProducto(input: ProductoInput): Producto
+}
